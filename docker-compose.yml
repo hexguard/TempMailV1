@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  temp-mail-bot:
+    image: python:3.12-slim
+    container_name: temp_mail_bot
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env
+    command: >
+      sh -c "
+      pip install --no-cache-dir -r requirements.txt &&
+      python main.py"
+    restart: always
